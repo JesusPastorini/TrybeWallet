@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchCurrencies } from '../redux/actions/index';
+import { fetchCurrencies, fetchExpenses } from '../redux/actions/index';
 
 class WalletForm extends Component {
   state = {
     value: '',
     description: '',
-    currency: '',
-    method: '',
-    tag: '',
+    currency: 'USD',
+    method: 'Dinheiro',
+    tag: 'Alimentação',
   };
 
   componentDidMount() {
-    // this.props.fetchCurrencies();
     const { dispatch } = this.props;
     dispatch(fetchCurrencies());
-    console.log(this.props);
   }
 
   handleChange = (event) => {
@@ -24,17 +22,17 @@ class WalletForm extends Component {
   };
 
   handleSubmit = () => {
-    // Lógica para salvar a despesa
-
+    const { dispatch } = this.props;
+    dispatch(fetchExpenses(this.state));
+    this.setState({ value: '', description: '' });
   };
 
   render() {
     const { value, description, currency, method, tag } = this.state;
     const { currencies, isLoading } = this.props;
     if (isLoading) <div>Carregando...</div>;
-
     return (
-      <form onSubmit={ this.handleSubmit }>
+      <form>
         <label>
           Valor da Despesa:
           <input
@@ -107,7 +105,12 @@ class WalletForm extends Component {
         </label>
         <br />
 
-        <button type="button">Adicionar despesa</button>
+        <button
+          type="button"
+          onClick={ this.handleSubmit }
+        >
+          Adicionar despesa
+        </button>
       </form>
     );
   }

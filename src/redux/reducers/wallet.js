@@ -1,14 +1,23 @@
 const INITIAL_STATE = {
   currencies: [],
+  expenses: [],
+  editor: false,
+  idToEdit: 0,
   isLoading: false,
 };
 
-const Wallet = (state = INITIAL_STATE, action) => {
+const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case 'SET_CURRENCIES':
     return {
       ...state,
       currencies: action.payload,
+    };
+  case 'SET_EXPENSES':
+    return {
+      ...state,
+      expenses: [...state.expenses,
+        { ...action.paramExpense, id: state.expenses.length }],
     };
   case 'SET_LOADING':
     return {
@@ -20,4 +29,4 @@ const Wallet = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default Wallet;
+export default wallet;
