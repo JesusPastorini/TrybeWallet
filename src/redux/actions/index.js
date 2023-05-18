@@ -13,6 +13,11 @@ export const createExpenses = (paramExpense, exchangeRates) => ({
   paramExpense: { ...paramExpense, exchangeRates },
 });
 
+export const deleteExpense = (id) => ({
+  type: 'DELETE_EXPENSE',
+  payload: id,
+});
+
 export const setLoading = (isLoading) => ({
   type: 'SET_LOADING',
   payload: isLoading,

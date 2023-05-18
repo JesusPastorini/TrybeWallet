@@ -23,7 +23,7 @@ Header.propTypes = {
   email: PropTypes.string.isRequired,
   expenses: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
       currency: PropTypes.string.isRequired,
       exchangeRates: PropTypes.objectOf(
         PropTypes.shape({
