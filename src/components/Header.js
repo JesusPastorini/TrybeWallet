@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class Header extends Component {
   render() {
     const { email, expenses } = this.props;
-    console.log(expenses);
     const totalExpenses = expenses.reduce((acc, val) => {
       const exchangeRate = val.exchangeRates[val.currency].ask;
       return acc + val.value * exchangeRate;
@@ -24,7 +23,7 @@ Header.propTypes = {
   email: PropTypes.string.isRequired,
   expenses: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.number.isRequired,
+      value: PropTypes.string.isRequired,
       currency: PropTypes.string.isRequired,
       exchangeRates: PropTypes.objectOf(
         PropTypes.shape({
