@@ -38,14 +38,15 @@ class Table extends Component {
               exchangeRates,
             }) => (
               <tr key={ id }>
-                {console.log(exchangeRates)}
                 <td>{description}</td>
                 <td>{tag}</td>
                 <td>{method}</td>
                 <td>{ value.includes('.') ? value : `${value}.00`}</td>
                 <td>{(Number(exchangeRates[currency].ask).toFixed(2))}</td>
                 <td>{exchangeRates[currency].name}</td>
-                <td>{(value * exchangeRates[currency].ask).toFixed(2)}</td>
+                <td>
+                  {(Number(value) * Number(exchangeRates[currency].ask)).toFixed(2)}
+                </td>
                 <td>Real</td>
                 <td>
                   <button onClick={ () => onDeleteExpense(id) }>Editar</button>
@@ -71,12 +72,8 @@ Table.propTypes = {
       description: PropTypes.string.isRequired,
       tag: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
+      value: PropTypes.string.isRequired,
       currency: PropTypes.string.isRequired,
-      exchangeRates: PropTypes.shape({
-        ask: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-      }).isRequired,
     }),
   ).isRequired,
   dispatch: PropTypes.func.isRequired,
