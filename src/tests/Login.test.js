@@ -1,8 +1,8 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
-import userEvent from '@testing-library/user-event';
 
 describe('Testa a rota Login', () => {
   it('Aplicação é renderizada com sucesso e o botão abilita após email e senha validos', () => {
@@ -20,8 +20,8 @@ describe('Testa a rota Login', () => {
     expect(btnDisable).toBeInTheDocument();
     expect(btnDisable).toBeDisabled();
 
-    userEvent.type(imputEmail, 'alguem@alguem.com')
-    userEvent.type(password, '1234567')
+    userEvent.type(imputEmail, 'alguem@alguem.com');
+    userEvent.type(password, '1234567');
     const btnEnabled = screen.getByRole('button', { name: /entrar/i });
     expect(btnEnabled).toBeInTheDocument();
     expect(btnEnabled).toBeEnabled();
