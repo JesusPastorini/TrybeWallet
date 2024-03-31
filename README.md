@@ -6,9 +6,14 @@ Bem-vindo ao repositório do projeto Trybewallet! Este projeto consiste na imple
 
 Neste projeto, desenvolvi uma carteira virtual onde os usuários podem adicionar, remover e editar seus gastos. Além disso, é possível visualizar uma tabela com os gastos e o total convertido para uma moeda de escolha.
 
+## 📸 Tela de Login da Aplicação
+
+![Trybewallet](public/login.gif)
+
 ## 📸 Imagem da Aplicação
 
-![Trybewallet](url_da_imagem)
+![Trybewallet](public/bonusDropdown.gif)
+![Trybewallet2](public/carteira.gif)
 
 ## 📚 Tecnologias Utilizadas
 
